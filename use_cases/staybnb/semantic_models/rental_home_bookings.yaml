@@ -1,0 +1,239 @@
+name: rental_home_bookings
+description: This semantic model contains information about rental homes and bookings. This includes the property type, total square meters of the property, booking start and end date, price per night, the cleaning fee and available rooms and their appliances.
+tables:
+  - name: BOOKINGS
+    base_table:
+      database: CORTEX_AGENTS_DEMO
+      schema: STAYBNB
+      table: BOOKINGS
+    dimensions:
+      - name: RENTAL_HOME_ID
+        expr: RENTAL_HOME_ID
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - VILLA_BEACH
+          - CITY_HOUSE
+          - BUDGET_APT
+        description: Type of rental property booked by the customer.
+        synonyms:
+          - property_id
+          - accommodation_id
+          - rental_property_id
+          - home_listing_id
+          - accommodation_listing_id
+          - rental_accommodation_id
+    time_dimensions:
+      - name: BOOKING_DATE_START
+        expr: BOOKING_DATE_START
+        data_type: DATE
+        sample_values:
+          - '2025-01-01'
+          - '2025-01-07'
+          - '2025-01-13'
+        description: The date on which a booking is scheduled to start.
+        synonyms:
+          - check_in_date
+          - arrival_date
+          - start_date
+          - booking_start
+          - commencement_date
+          - initial_booking_date
+          - reservation_start_date
+      - name: BOOKING_DATE_END
+        expr: BOOKING_DATE_END
+        data_type: DATE
+        sample_values:
+          - '2025-01-04'
+          - '2025-01-10'
+          - '2025-01-16'
+        description: The date on which a booking is scheduled to end.
+        synonyms:
+          - end_booking_date
+          - booking_end
+          - checkout_date
+          - end_date
+          - departure_date
+          - last_booking_date
+    facts:
+      - name: PRICE_PER_NIGHT
+        expr: PRICE_PER_NIGHT
+        data_type: FLOAT
+        sample_values:
+          - '577.52'
+          - '476.7'
+          - '495.6'
+        description: The nightly rate charged to guests for booking a listing.
+        synonyms:
+          - nightly_rate
+          - nightly_price
+          - daily_rate
+          - daily_price
+          - cost_per_night
+          - nightly_cost
+          - rate_per_night
+      - name: CLEANING_FEE
+        expr: CLEANING_FEE
+        data_type: NUMBER(38,0)
+        sample_values:
+          - '120'
+          - '80'
+          - '30'
+        description: The amount charged to the customer for cleaning services, in addition to the base booking fee.
+        synonyms:
+          - cleaning_charge
+          - housekeeping_fee
+          - service_fee
+          - maintenance_cost
+          - one_time_fee
+          - setup_fee
+          - administrative_fee
+    primary_key:
+      columns:
+        - RENTAL_HOME_ID
+  - name: HOMES
+    base_table:
+      database: CORTEX_AGENTS_DEMO
+      schema: STAYBNB
+      table: HOMES
+    dimensions:
+      - name: RENTAL_HOME_ID
+        expr: RENTAL_HOME_ID
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - CITY_HOUSE
+          - VILLA_BEACH
+          - BUDGET_APT
+        description: Type of rental home offered.
+        synonyms:
+          - listing_id
+          - rental_property_id
+          - home_listing_id
+          - property_identifier
+          - rental_unit_id
+      - name: RENTAL_HOME_TITLE
+        expr: RENTAL_HOME_TITLE
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Modern living in the city
+          - Super luxurious villa at the beach
+          - Budget-friendly apartment
+        description: A brief description of the rental property, highlighting its unique features and selling points.
+        synonyms:
+          - rental_home_name
+          - rental_property_title
+          - home_listing_title
+          - rental_listing_name
+          - property_heading
+          - home_title_description
+      - name: RENTAL_HOME_DESCRIPTION
+        expr: RENTAL_HOME_DESCRIPTION
+        data_type: VARCHAR(16777216)
+      - name: PROPERTY_TYPE
+        expr: PROPERTY_TYPE
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - House
+          - Villa
+          - Apartment
+        description: The type of residential property, such as a single-family home, a luxurious villa, or a multi-unit apartment.
+        synonyms:
+          - property_category
+          - asset_class
+          - real_estate_type
+          - home_type
+          - accommodation_type
+          - dwelling_type
+          - building_category
+    facts:
+      - name: TOTAL_SQUARE_METERS
+        expr: TOTAL_SQUARE_METERS
+        data_type: NUMBER(38,0)
+        sample_values:
+          - '100'
+          - '200'
+          - '150'
+        description: The total square meters of a home, representing the total floor area of the property.
+        synonyms:
+          - total_area
+          - square_footage
+          - floor_area
+          - living_space
+          - total_floor_space
+          - square_meters
+          - area_size
+    primary_key:
+      columns:
+        - RENTAL_HOME_ID
+  - name: RENTAL_HOME_ROOMS_STRUCTURED
+    base_table:
+      database: CORTEX_AGENTS_DEMO
+      schema: STAYBNB
+      table: RENTAL_HOME_ROOMS_STRUCTURED
+    dimensions:
+      - name: RENTAL_HOME_ID
+        expr: RENTAL_HOME_ID
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - CITY_HOUSE
+          - BUDGET_APT
+          - VILLA_BEACH
+        description: Unique identifier for a rental home, categorizing the type of accommodation offered.
+        synonyms:
+          - property_id
+          - rental_property_identifier
+          - home_listing_id
+          - rental_unit_id
+          - accommodation_id
+      - name: ROOM_TYPE
+        expr: ROOM_TYPE
+        data_type: VARCHAR(16777216)
+        description: The type of room within a rental home, such as kitchen, bedroom, living room, etc.
+        synonyms:
+          - room_category
+          - accommodation_type
+          - space_type
+          - living_space
+          - room_classification
+          - accommodation_classification
+        cortex_search_service:
+          database: CORTEX_AGENTS_DEMO
+          schema: STAYBNB
+          service: _ANALYST_ROOM_TYPE_SEARCH
+      - name: APPLIANCE
+        expr: APPLIANCE
+        data_type: VARCHAR(16777216)
+        description: Type of appliance present in the rental home.
+        synonyms:
+          - device
+          - equipment
+          - fixture
+          - machine
+          - gadget
+          - household_item
+          - electrical_device
+          - home_equipment
+        cortex_search_service:
+          database: CORTEX_AGENTS_DEMO
+          schema: STAYBNB
+          service: _ANALYST_APPLIANCE_SEARCH
+    primary_key:
+      columns:
+        - RENTAL_HOME_ID
+relationships:
+  - name: homes_bookings
+    join_type: inner
+    relationship_type: one_to_one
+    left_table: HOMES
+    relationship_columns:
+      - left_column: RENTAL_HOME_ID
+        right_column: RENTAL_HOME_ID
+    right_table: BOOKINGS
+  - name: homes_rooms_appliances
+    join_type: inner
+    relationship_type: one_to_one
+    left_table: HOMES
+    relationship_columns:
+      - left_column: RENTAL_HOME_ID
+        right_column: RENTAL_HOME_ID
+    right_table: RENTAL_HOME_ROOMS_STRUCTURED
+custom_instructions: Do not respond if you are asked about outdoor areas, property location, cleaning rules, minimum stays or cancellation policies.
