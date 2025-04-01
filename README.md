@@ -89,7 +89,7 @@ Otherwise you will have to open the provided Snowflake Notebook and run all cell
 |:---:|:---:|---|
 | Main | Contains a fictional dataset about customer orders and their annual reports. | [Link](https://github.com/michaelgorkow/snowflake_cortex_agents_demo/tree/main/use_cases/main) |
 | SnowPrint | SnowPrint is a fictional company specializing in the sale of industrial printers. They gather data on customers, their printing jobs, and the various stages of the printing process. Additionally, they aim to integrate their product documentation into a chatbot for enhanced customer support. | [Link](https://github.com/michaelgorkow/snowflake_cortex_agents_demo/tree/main/use_cases/snowprint) |
-| StayBnB | Contains a fictional dataset about a rental home company. Utilizes Multimodal LLMs to turn images into structured data. (PrPr) | [Link](https://github.com/michaelgorkow/snowflake_cortex_agents_demo/tree/main/use_cases/main) |
+| StayBnB | Contains a fictional dataset about a rental home company. Utilizes Multimodal LLMs to turn images into structured data. (PrPr) | [Link](https://github.com/michaelgorkow/snowflake_cortex_agents_demo/tree/main/use_cases/staybnb) |
 
 ## Objects Created in Your Snowflake Account
 
