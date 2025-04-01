@@ -41,14 +41,15 @@ These queries operate on structured, tabular data sources.
 
 | Question | Data Complexity | Query Complexity |
 |----------|----------------|--------|
-| Provide an overview per calendar week of how many print jobs are still pending. | Single table, no Search Integration | 🟢 **Easy** |
-| Which customers in United Kingdom have the most jobs cancelled? Provide a top 10 list. | 2 tables, 1 Search Integration | 🔴 **Hard** |
+| What was the average nightly rate per month in 2025? | Single table, no Search Integration | 🟢 **Easy** |
+| List the top 2 properties with the lowest average cleaning fee. | Single table, no Search Integration | 🟢 **Easy** |
+| How does nightly rate relate to property square meters? | Two tables, no Search Integration | 🟡 **Medium** |
+| What is the total number of bookings for properties with and without a microwave? | 2 tables, 1 Search Integration, Output from Multimodal LLM | 🔴 **Hard** |
 
 ### **Questions for Unstructured Data**  
 These queries analyze text-based documents.
 
 | Question | Data Complexity | Query Complexity |
 |----------|----------------|--------|
-| What are the core components of the Prinect Manager CR workflow? | Single text chunk | 🟢 **Easy** |
-| What are the basic steps for setting up users and customers? | 2 chunks from one document | 🟡 **Medium** |
-| How does the standardized offset print process, including the use of a profile connection space, get operationalized within the Prinect Manager CR workflow during job creation and press calibration? | 4 chunks across two documents | 🔴 **Hard** |
+| What properties are at the beach and close to an airport? | Single text chunk | 🟢 **Easy** |
+| My budget is really tight but I am looking for a property that is either in the city or at least is close to public transportation to get into the city. Of course I'd prefer a property directly in the city. What are my options? | 2 chunks from two documents | 🔴 **Hard** |
