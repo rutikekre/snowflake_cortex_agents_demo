@@ -1,9 +1,9 @@
-# Staybnb
+# StayBnB
 
 ![Cortex Agents](_resources/staybnb.png)
 
 ## Overview
-**Staybnb** is a global online marketplace that connects people looking to rent out their homes with those seeking short-term accommodations. Whether it's a cozy apartment in the city, a beachfront villa, or a unique treehouse in the woods, Airbnb offers travelers a wide variety of places to stay in over 220 countries and regions. With a focus on community, trust, and personalized experiences, we enable hosts to earn income while helping guests experience destinations like locals.
+**StayBnB** is a global online marketplace that connects people looking to rent out their homes with those seeking short-term accommodations. Whether it's a cozy apartment in the city, a beachfront villa, or a unique treehouse in the woods, StayBnB offers travelers a wide variety of places to stay in over 220 countries and regions. With a focus on community, trust, and personalized experiences, we enable hosts to earn income while helping guests experience destinations like locals.
 
 ## Use Case Deployment
 Execute this SQL Query to create and run the notebook in your account which will generate data and required services.
@@ -13,7 +13,7 @@ EXECUTE IMMEDIATE FROM @CORTEX_AGENTS_DEMO.PUBLIC.GITHUB_REPO_CORTEX_AGENTS_DEMO
 ```
 
 ## Structured Data & Use Cases
-This repository contains a **fictional dataset** from _Staybnb_. The dataset is split into two core tables that capture information about properties and bookings:
+This repository contains a **fictional dataset** from _StayBnB_. The dataset is split into two core tables that capture information about properties and bookings:
 
 1. **Homes**  
    Contains data about property type and total square meters.
