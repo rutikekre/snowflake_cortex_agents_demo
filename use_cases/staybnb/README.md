@@ -1,6 +1,6 @@
 # Staybnb
 
-![Cortex Agents](_resources/SnowPrint_header.png)
+![Cortex Agents](_resources/staybnb.png)
 
 ## Overview
 **Staybnb** is a global online marketplace that connects people looking to rent out their homes with those seeking short-term accommodations. Whether it's a cozy apartment in the city, a beachfront villa, or a unique treehouse in the woods, Airbnb offers travelers a wide variety of places to stay in over 220 countries and regions. With a focus on community, trust, and personalized experiences, we enable hosts to earn income while helping guests experience destinations like locals.
