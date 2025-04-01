@@ -648,8 +648,8 @@ class APIService:
             tool_resources[row['Name']] = {
                 'name': row['Full Name'],
                 'max_results': row['Max Results'],
-                'title_column':'RELATIVE_PATH',
-                'id_column':'CHUNK_INDEX'
+                'title_column': row['Attribute Columns'].split(',')[0],
+                #'id_column':'CHUNK_INDEX'
             }
         
         # Add analyst services
@@ -1560,7 +1560,7 @@ def init_session_state():
     
     if 'search_services' not in st.session_state:
         st.session_state.search_services = pd.DataFrame(
-            columns=['Active', 'Name', 'Database', 'Schema', 'Max Results', 'Full Name']
+            columns=['Active', 'Name', 'Database', 'Schema', 'Max Results', 'Full Name', 'Title Column', 'ID Column']
         )
     
     if 'tools' not in st.session_state:
@@ -1730,19 +1730,21 @@ def manage_search_services():
             services = session.sql('SHOW CORTEX SEARCH SERVICES IN ACCOUNT').select(
                 col('"database_name"').alias('"Database"'),
                 col('"schema_name"').alias('"Schema"'),
-                col('"name"').alias('"Name"')
+                col('"name"').alias('"Name"'),
+                col('"search_column"').alias('"Search Column"'),
+                col('"attribute_columns"').alias('"Attribute Columns"')
             ).with_column(
                 '"Full Name"', concat_ws(lit('.'), col('"Database"'), col('"Schema"'), col('"Name"'))
             ).filter(col('"Name"').startswith('_ANALYST_') == False).to_pandas()
             
             services['Active'] = False
             services['Max Results'] = 5
-            services = services[['Active','Name','Database','Schema','Max Results','Full Name']]
+            services = services[['Active','Name','Database','Schema','Max Results','Full Name', 'Search Column', 'Attribute Columns']]
             st.session_state.search_services = services
         except Exception as e:
             st.error(f"Error fetching search services: {e}")
             st.session_state.search_services = pd.DataFrame(
-                columns=['Active','Name','Database','Schema','Max Results','Full Name']
+                columns=['Active','Name','Database','Schema','Max Results','Full Name', 'Search Column', 'Attribute Columns']
             )
     
     services_df = st.data_editor(
