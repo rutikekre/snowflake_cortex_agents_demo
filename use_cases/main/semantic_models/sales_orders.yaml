@@ -45,7 +45,6 @@ tables:
           - locale
           - area
           - zone
-          - state
           - province
           - nationality
         cortex_search_service_name: CORTEX_AGENTS_DEMO.MAIN._ANALYST_COUNTRY_SEARCH
