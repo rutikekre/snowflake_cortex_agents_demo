@@ -39,6 +39,7 @@ These queries operate on structured, tabular data sources.
 | What was the total order quantity per month with status shipped? | Single table, no Search Integration | 🟢 **Easy** |
 | What was the total order quantity per month for United Kingdom with status shipped? | Single table, 1 Search Integration | 🟡 **Medium** |
 | What was the order revenue per month for steel for my customer Delta? | 3 tables, 2 Search Integrations | 🔴 **Hard** |
+| What was the order revenue per month for steel and aluminium for my customer Delta? | 3 tables, 2 Search Integrations with multiple values | 🔴 **Hard** |
 
 ### **Questions for Unstructured Data**  
 These queries analyze text-based documents.
