@@ -27,10 +27,6 @@ This leads to a third table:
 3. **RENTAL_HOME_ROOMS_STRUCTURED**  
    Contains the rooms and all available appliances per room per home.  
 
-> [!IMPORTANT]
-> Multimodal LLMs are currently in PrPr and only accessible to specific Snowflake accounts.
-
-
 ## Unstructured Data & Use Cases
 Each property has a description that includes information about the surrounding location, the outdoor area, the host, etc.
 
