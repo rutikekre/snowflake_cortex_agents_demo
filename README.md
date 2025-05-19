@@ -67,8 +67,8 @@ CREATE GIT REPOSITORY GITHUB_REPO_CORTEX_AGENTS_DEMO
 	API_INTEGRATION = 'GITHUB_INTEGRATION_CORTEX_AGENTS_DEMO' 
 	COMMENT = 'Github Repository from Michael Gorkow with a demo for Cortex Agents.';
 
--- Enable 2025_01 Bundle (Git-Integration for Streamlit in Snowflake)
-SELECT SYSTEM$ENABLE_BEHAVIOR_CHANGE_BUNDLE('2025_01');
+-- Enable 2025_02 Bundle (Git-Integration for Streamlit in Snowflake)
+SELECT SYSTEM$ENABLE_BEHAVIOR_CHANGE_BUNDLE('2025_02');
 
 -- Run the installation of the Streamlit App
 EXECUTE IMMEDIATE FROM @CORTEX_AGENTS_DEMO.PUBLIC.GITHUB_REPO_CORTEX_AGENTS_DEMO/branches/main/setup.sql;
